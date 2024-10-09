@@ -17,29 +17,16 @@ MSYS2 是一个用于 Windows 的软件发行版，提供了一个类似于 Unix
 
 请访问镜像目录下的 distrib/ 目录：
 
-import SharedContext from '@site/src/utils/SharedContext';
-export function SiteLink(props) {
-  const ctx = React.useContext(SharedContext);
-  const _http = ctx.https ? "https": "http";
-  const _domain = ctx.domain;
-  const appendix = props.appendix || "";
-  return <a target="_self" href={`${_http}://${_domain}${props.href}`}>{props.children}</a>;
-}
-
 ### x86_64
 
 <SiteLink href="/msys2/distrib/x86_64/">
-    <button className="button button--primary">
-    查看 x86_64 版本安装包
-    </button>
+    <button className="button button--primary">查看 x86_64 版本安装包</button>
 </SiteLink>
 
 ### i686
 
 <SiteLink href="/msys2/distrib/i686/">
-    <button className="button button--primary">
-    查看 i686 版本安装包
-    </button>
+    <button className="button button--primary">查看 i686 版本安装包</button>
 </SiteLink>
 
 
@@ -58,40 +45,40 @@ export function SiteLink(props) {
 1. **编辑 `/etc/pacman.d/mirrorlist.mingw32` 文件**：
 在文件开头添加以下内容：
 
-```bash varcode
-Server = ${_http}://${_domain}/msys2/mingw/i686
-```
+    ```bash varcode
+    Server = ${_http}://${_domain}/msys2/mingw/i686
+    ```
 
 2. **编辑 `/etc/pacman.d/mirrorlist.mingw64` 文件**：
    在文件开头添加以下内容：
 
-```bash varcode
-Server = ${_http}://${_domain}/msys2/mingw/x86_64
-```
+    ```bash varcode
+    Server = ${_http}://${_domain}/msys2/mingw/x86_64
+    ```
 
 3. **编辑 `/etc/pacman.d/mirrorlist.msys` 文件**：
    在文件开头添加以下内容：
 
-```bash varcode
-Server = ${_http}://${_domain}/msys2/msys/$arch
-```
+    ```bash varcode
+    Server = ${_http}://${_domain}/msys2/msys/$arch
+    ```
 
 4. **编辑 `/etc/pacman.d/mirrorlist.ucrt64` 文件**：
    在文件开头添加以下内容：
 
-```bash varcode
-Server = ${_http}://${_domain}/msys2/mingw/ucrt64
-```
+    ```bash varcode
+    Server = ${_http}://${_domain}/msys2/mingw/ucrt64
+    ```
 
 5. **刷新软件包数据库**：
 
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}pacman -Sy
-```
+    ```shell varcode
+    [ ] (root) 是否为 root 用户
+    ---
+    const SUDO = !root ? 'sudo ' : '';
+    ---
+    ${SUDO}pacman -Sy
+    ```
 
 通过这些步骤，你可以将 MSYS2 的镜像源更改为华中科技大学的镜像站，从而加速软件包的下载和更新。
 
@@ -114,5 +101,5 @@ ${SUDO}sed -i "s#https\\?://mirror.msys2.org/#${_http}://${_domain}/msys2/#g" /e
 
 ## 引用
 
-[^1] [MSYS2 镜像站使用帮助 | 阿里云开源镜像站](https://developer.aliyun.com/mirror/msys2)
-[^2] [MSYS2 镜像站使用帮助 | 清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/help/msys2/)
+1. [MSYS2 镜像站使用帮助 | 阿里云开源镜像站](https://developer.aliyun.com/mirror/msys2)
+2. [MSYS2 镜像站使用帮助 | 清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/help/msys2/)
